@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="src/css/index.css" rel="stylesheet" type="text/css"/>
+  <script src="src/js/image_controller.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <header>
+    <form name="image_controlers">
+      <div class="form_container">
+        <div class="form_section">
+          <h2>examples</h2>
+          <ul>
+            <li>
+              <label>
+                <input name="example" type="radio" value="jupiter.jpg" checked="true" onchange="updateExampleImage"/>
+                <span>jupiter</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input name="example" type="radio" value="earth.jpg" onchange="updateExampleImage"/>
+                <span>earth</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input name="example" type="radio" value="fullmoon.jpg" onchange="updateExampleImage"/>
+                <span>fullmoon.jpg</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input name="example" type="radio" value="people.jpg" onchange="updateExampleImage"/>
+                <span>people</span>
+              </label>
+            </li>
+          </ul>
+        </div>
+        <div class="form_section">
+          <h2>format</h2>
+          <ul>
+            <li>
+              <label>
+                <input type="radio" value="jpeg" name="format" checked="true" data-transform="f" onchange="performTransform"/>
+                <span>jpeg</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="radio" value="webp" name="format" data-transform="f" onchange="performTransform"/>
+                <span>webp</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="radio" value="png" name="format" data-transform="f" onchange="performTransform"/>
+                <span>png</span>
+              </label>
+            </li>
+          </ul>
+        </div>
+        <div class="form_section">
+          <h2>quality</h2>
+          <label>
+            <input name="quality" type="range" min="1" max="100" value="100" data-transform="q"/>
+            <span id="js-qualityDisplay">100%</span>
+          </label>
+        </div>
+        <div class="form_section extract_section">
+          <h2>crop</h2>
+          <div class="extract_controllers">
+            <div class="extract_input">
+              <label>
+                <select name="gravity">
+                  <option value="center" selected>center</option>
+                  <option value="n">north</option>
+                  <option value="ne">north-east</option>
+                  <option value="e">east</option>
+                  <option value="se">south-east</option>
+                  <option value="s">south</option>
+                  <option value="sw">south-west</option>
+                  <option value="w">west</option>
+                  <option value="nw">north-west</option>
+                </select>
+                <span>gravity</span>
+              </label>
+            </div>
+            <div class="extract_input">
+              <label>
+                <input type="number" name="x" min="0"/>
+                <span>coords X</span>
+              </label>
+            </div>
+            <div class="extract_input">
+              <label>
+                <input type="number" name="y" min="0"/>
+                <span>coords Y</span>
+              </label>
+            </div>
+            <div class="extract_input">
+              <label>
+                <input type="number" name="width" step="10">
+                <span>width</span>
+              </label>
+            </div>
+            <div class="extract_input">
+              <label>
+                <input type="number" name="height" step="10">
+                <span>height</span>
+              </label>
+            </div>
+          </div>
+          <div class="extract_buttons">
+            <button type="button" name="extract" class="btn-accept">extract</button>
+            <button id="js-extract-clear-button" type="button" class="btn-clear">clear extract</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </header>
+  <section class="image_section">
+    <div id="js-timetrack" class="time">
+      <strong id="js-timetrack-value"></strong>
+      <span>seconds</span>
+    </div>
+    <div class="imgframe">
+      <div class="imgwrapr">
+        <picture id="js-picture">
+          <source media="(min-width: 1700px)" srcset="" data-width="1700">
+          <source media="(min-width: 1300px)" srcset="" data-width="1300">
+          <source media="(min-width: 1000px)" srcset="" data-width="1000">
+          <source media="(min-width: 700px)" srcset="" data-width="700">
+          <source media="(min-width: 400px)" srcset="" data-width="400">
+          <source media="(max-width: 399px)" srcset="" data-width="400">
+          <img id="js-image" src=""/>
+        </picture>
+      </div>
+      <div class="imgwrapr">
+        <img id="js-extracted-image" src=""/>
+      </div>
+    </div>
+  </section>
+  <footer class="info-display">
+    <div class="info-container">
+      <div class="info_unit">
+        <h3>window size</h3>
+        <span id="js-window-size"></span>
+      </div>
+      <div class="info_unit">
+        <h3>image size</h3>
+        <span id="js-image-size"></span>
+      </div>
+      <div class="info_unit">
+        <h3>image source</h3>
+        <span id="js-src-display"></span>
+      </div>
+    <div>
+  </footer>
+
+</body>
+</html>
